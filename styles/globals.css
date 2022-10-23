@@ -17,4 +17,21 @@ a {
 
 .container {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+.main {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer {
+  width: 100%;
 }
