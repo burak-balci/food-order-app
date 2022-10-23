@@ -1,8 +1,12 @@
 import React from "react";
 import styles from "../styles/Header.module.css";
 import Head from "next/head";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Header = () => {
+  const route = useRouter();
+
   return (
     <>
       <Head>
@@ -16,17 +20,63 @@ const Header = () => {
       <div className={styles.container}>
         <div className={styles.item}>
           <ul className={styles.list}>
-            <li className={styles.listItem}>Homepage</li>
-            <li className={styles.listItem}>Foods</li>
-            <li className={styles.listItem}>Desserts</li>
-            <li className={styles.listItem}>Breakfast</li>
+            <Link href="/">
+              <li
+                className={
+                  route.pathname === "/" ? styles.active : styles.listItem
+                }
+              >
+                Homepage
+              </li>
+            </Link>
+            <Link href="/foods">
+              <li
+                className={
+                  route.pathname === "/foods" ? styles.active : styles.listItem
+                }
+              >
+                Foods
+              </li>
+            </Link>
+            <Link href="/desserts">
+              <li
+                className={
+                  route.pathname === "/desserts"
+                    ? styles.active
+                    : styles.listItem
+                }
+              >
+                Desserts
+              </li>
+            </Link>
+            <Link href="/breakfast">
+              <li
+                className={
+                  route.pathname === "/breakfast"
+                    ? styles.active
+                    : styles.listItem
+                }
+              >
+                Breakfast
+              </li>
+            </Link>
           </ul>
         </div>
         <div className={styles.item}>
           <span className={styles.logo}>BB Food</span>
         </div>
         <div className={styles.item}>
-          <button className={styles.button}>Sign in</button>
+          <Link href="/signin">
+            <span
+              className={
+                route.pathname === "/signin"
+                  ? styles.activeButton
+                  : styles.button
+              }
+            >
+              Sign in
+            </span>
+          </Link>
         </div>
       </div>
     </>
