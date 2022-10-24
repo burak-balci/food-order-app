@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "../styles/Signin.module.css";
-import restaurant from "../assets/images/pexels-rene-asmussen-1581384.jpg";
+import restaurant from "../assets/images/signinimg.jpg";
 
 const SignIn = () => {
   return (
@@ -12,7 +12,6 @@ const SignIn = () => {
         width="433"
         height="577"
         className={styles.image}
-        layout="intrinsic"
       />
       <div className={styles.innerContainer}>
         <form className={styles.list}>

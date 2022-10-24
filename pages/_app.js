@@ -1,9 +1,11 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import "../styles/globals.css";
-import Head from "next/head";
+import { useRouter } from "next/router";
 
 function MyApp({ Component, pageProps }) {
+  const { route } = useRouter();
+  console.log(route);
   return (
     <div className="container">
       <header className="header">
@@ -12,9 +14,11 @@ function MyApp({ Component, pageProps }) {
       <main className="main">
         <Component {...pageProps} />
       </main>
-      <footer className="footer">
-        <Footer />
-      </footer>
+      {route !== "/signin" && (
+        <footer className="footer">
+          <Footer />
+        </footer>
+      )}
     </div>
   );
 }

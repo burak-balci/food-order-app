@@ -4,7 +4,8 @@
   border: 1px solid #faf7f0;
 }
 .image {
-  z-index: -2;
+  z-index: 2;
+  position: relative;
   object-fit: cover;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
