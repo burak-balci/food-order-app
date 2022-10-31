@@ -77,6 +77,17 @@ const Header = () => {
               Sign in
             </span>
           </Link>
+          <Link href="/signup">
+            <span
+              className={
+                route.pathname === "/signup"
+                  ? styles.activeButton
+                  : styles.button
+              }
+            >
+              Sign up
+            </span>
+          </Link>
         </div>
       </div>
     </>

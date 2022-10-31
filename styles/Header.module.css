@@ -3,7 +3,6 @@
   padding: 0 50px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
   width: 100%;
   z-index: 818;
   background-color: #dd5353;
@@ -15,6 +14,9 @@
   flex: 1;
   font-size: large;
   color: #faf7f0;
+}
+.item:last-child {
+  justify-content: end;
 }
 .list {
   padding: 0;
