@@ -9,6 +9,7 @@
   padding-top: 22px;
   display: flex;
   color: #faf7f0;
+  border-top: 1px solid whitesmoke;
 }
 .logo {
   cursor: default;

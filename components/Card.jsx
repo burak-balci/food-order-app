@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import styles from "../styles/Card.module.css";
 
 const Card = () => {
+  const { route } = useRouter();
+
   return (
-    <Link href="/foods/chocolate molten cakes">
+    <Link href={`${route}/chocolate molten cakes`}>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
           <img

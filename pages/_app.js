@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 function MyApp({ Component, pageProps }) {
   const { route } = useRouter();
   const routeCondition = ["/", "/signin", "/signup"];
-  console.log(route);
+
   return (
     <div className="container">
       {route !== "/" && (

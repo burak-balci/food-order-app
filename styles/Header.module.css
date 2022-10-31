@@ -43,6 +43,7 @@
   cursor: default;
   font-size: 60px;
   font-family: "Dancing Script", cursive;
+  user-select: none;
 }
 .button {
   color: #faf7f0;
