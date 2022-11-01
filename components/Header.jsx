@@ -3,6 +3,7 @@ import styles from "../styles/Header.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Icon from "../components/Icon/Icon";
 
 const Header = () => {
   const route = useRouter();
@@ -66,27 +67,11 @@ const Header = () => {
           <span className={styles.logo}>BB Food</span>
         </div>
         <div className={styles.item}>
-          <Link href="/signin">
-            <span
-              className={
-                route.pathname === "/signin"
-                  ? styles.activeButton
-                  : styles.button
-              }
-            >
-              Sign in
-            </span>
-          </Link>
-          <Link href="/signup">
-            <span
-              className={
-                route.pathname === "/signup"
-                  ? styles.activeButton
-                  : styles.button
-              }
-            >
-              Sign up
-            </span>
+          <Link href="/basket">
+            <div className={styles.button}>
+              <Icon icon="cart" size="24" />
+              <span>Basket ( 1 )</span>
+            </div>
           </Link>
         </div>
       </div>
