@@ -15,7 +15,7 @@
 .list {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 5rem;
   list-style: none;
   margin: 0 5rem 5rem 0;

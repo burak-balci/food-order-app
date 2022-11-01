@@ -11,6 +11,11 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       maxlength: 50,
     },
+    type: {
+      type: String,
+      required: true,
+      maxlength: 15,
+    },
     subtitle: {
       type: String,
       required: true,

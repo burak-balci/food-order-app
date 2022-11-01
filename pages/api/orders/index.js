@@ -1,15 +1,15 @@
 import dbConnect from "../../../lib/dbConnect";
-import Product from "../../../models/Product";
+import Order from "../../../models/Order";
 
 const handler = async (req, res) => {
   const { method } = req;
 
   dbConnect();
 
-  if (method === "GET") {
+  if (method === "POST") {
     try {
-      const products = await Product.find();
-      res.status(200).json(products);
+      const order = await Order.create(req.body);
+      res.status(200).json(order);
     } catch (error) {
       res.status(500).json(error);
     }
