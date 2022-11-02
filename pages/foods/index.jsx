@@ -2,18 +2,26 @@ import React from "react";
 import Card from "../../components/Card";
 import styles from "../../styles/Foods.module.css";
 
-const Foods = () => {
+const Foods = ({ data }) => {
+  const filtered = data.filter((item) => item.type === "food");
   return (
     <div className={styles.container}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {filtered.map((item) => (
+        <Card key={item._id} item={item} />
+      ))}
     </div>
   );
+};
+
+export const getStaticProps = async () => {
+  const res = await fetch("http://localhost:3000/api/products");
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
 };
 
 export default Foods;
