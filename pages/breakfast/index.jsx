@@ -3,18 +3,12 @@ import Card from "../../components/Card";
 import styles from "../../styles/Breakfast.module.css";
 
 const Breakfast = ({ data }) => {
-  console.log(data);
+  const filtered = data.filter((item) => item.type === "breakfast");
   return (
     <div className={styles.container}>
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {filtered.map((item) => (
+        <Card key={item._id} item={item} />
+      ))}
     </div>
   );
 };
