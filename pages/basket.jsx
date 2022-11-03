@@ -26,7 +26,7 @@ const Basket = () => {
     e.preventDefault();
     if (address && name) {
       axios
-        .post("http://localhost:3000/api/orders", {
+        .post("/api/orders", {
           customer: name,
           address: address,
           items: basket,
