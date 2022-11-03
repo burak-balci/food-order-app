@@ -14,7 +14,7 @@ const Desserts = ({ data }) => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("/api/products");
+  const res = await fetch(`${NEXT_PUBLIC_VERCEL_URL}/api/products`);
   const data = await res.json();
 
   return {
