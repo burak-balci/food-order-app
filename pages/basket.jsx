@@ -26,7 +26,7 @@ const Basket = () => {
     e.preventDefault();
     if (address && name) {
       axios
-        .post(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/orders`, {
+        .post(`${process.env.VERCEL_URL}/api/orders`, {
           customer: name,
           address: address,
           items: basket,
