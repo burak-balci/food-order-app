@@ -69,7 +69,7 @@ const ProductDetail = ({ data }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${NEXT_PUBLIC_VERCEL_URL}/api/products`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/products`);
   const data = await res.json();
 
   const paths = data.map((item) => {
