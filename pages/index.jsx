@@ -1,7 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-import Card from "../components/Card";
 import Icon from "../components/Icon/Icon";
 import styles from "../styles/Home.module.css";
 

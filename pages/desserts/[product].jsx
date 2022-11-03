@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/ProductDetail.module.css";
-import { useDispatch } from "react-redux";
-import { addBasket } from "../../context/basketSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addBasket, deleteItem } from "../../context/basketSlice";
 
 const ProductDetail = ({ data }) => {
   const route = useRouter();
   const filtered = data.filter((item) => item.title === route.query.product);
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(1);
+  const { basket } = useSelector((state) => state.basketReducer);
 
   return (
     <div className={styles.container}>
@@ -47,12 +48,21 @@ const ProductDetail = ({ data }) => {
           <span className={styles.listItem}>Price : </span> ${" "}
           {filtered[0].price}
         </div>
-        <button
-          onClick={() => dispatch(addBasket({ item: filtered[0], quantity }))}
-          className={styles.button}
-        >
-          Add to Cart
-        </button>
+        {JSON.stringify(basket).includes(filtered[0].title) ? (
+          <button
+            onClick={() => dispatch(deleteItem(filtered[0]._id))}
+            className={styles.button}
+          >
+            Remove from Basket
+          </button>
+        ) : (
+          <button
+            onClick={() => dispatch(addBasket({ item: filtered[0], quantity }))}
+            className={styles.button}
+          >
+            Add to Basket
+          </button>
+        )}
       </div>
     </div>
   );

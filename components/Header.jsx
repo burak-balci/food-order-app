@@ -4,9 +4,11 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import Icon from "../components/Icon/Icon";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const route = useRouter();
+  const { basket } = useSelector((state) => state.basketReducer);
 
   return (
     <>
@@ -70,7 +72,7 @@ const Header = () => {
           <Link href="/basket">
             <div className={styles.button}>
               <Icon icon="cart" size="24" />
-              <span>Basket ( 1 )</span>
+              <span>Basket ( {basket.length} )</span>
             </div>
           </Link>
         </div>

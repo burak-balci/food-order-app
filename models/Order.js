@@ -10,9 +10,9 @@ const OrderSchema = new mongoose.Schema(
     address: {
       type: String,
       required: true,
-      maxlength: 150,
+      maxlength: 50,
     },
-    items: {
+    item: {
       type: [Object],
       required: true,
     },
@@ -20,4 +20,4 @@ const OrderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model.Order || mongoose.model("Order", OrderSchema);
+export default mongoose.models.Order || mongoose.model("Order", OrderSchema);
