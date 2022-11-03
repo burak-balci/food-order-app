@@ -11,10 +11,14 @@ export const basketSlice = createSlice({
     addBasket: (state, action) => {
       state.basket = [...state.basket, action.payload];
     },
+    deleteItem: (state, action) => {
+      const id = action.payload;
+      state.basket = state.basket.filter((item) => item.item._id !== id);
+    },
   },
 });
 
-export const { addBasket } = basketSlice.actions;
+export const { addBasket, deleteItem } = basketSlice.actions;
 
 const basketReducer = basketSlice.reducer;
 export default basketReducer;

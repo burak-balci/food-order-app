@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import styles from "../../styles/ProductDetail.module.css";
+import { addBasket } from "../../context/basketSlice";
+import { useDispatch } from "react-redux";
 
 const ProductDetail = ({ data }) => {
   const route = useRouter();
   const filtered = data.filter((item) => item.title === route.query.product);
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className={styles.container}>
@@ -27,7 +31,11 @@ const ProductDetail = ({ data }) => {
         </ul>
         <div>
           <span className={styles.listItem}>Quantity : </span>
-          <select className={styles.select}>
+          <select
+            onChange={(e) => setQuantity(e.target.value)}
+            value={quantity}
+            className={styles.select}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -39,7 +47,12 @@ const ProductDetail = ({ data }) => {
           <span className={styles.listItem}>Price : </span> ${" "}
           {filtered[0].price}
         </div>
-        <button className={styles.button}>Add to Cart</button>
+        <button
+          onClick={() => dispatch(addBasket({ item: filtered[0], quantity }))}
+          className={styles.button}
+        >
+          Add to Cart
+        </button>
       </div>
     </div>
   );
