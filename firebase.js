@@ -3,12 +3,12 @@ import { addDoc, getFirestore } from "firebase/firestore";
 import { collection, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
-  appId: process.env.APP_ID,
+  apiKey: "AIzaSyAIRlm-vPrEnPtljE9OHZQoYQaBIuYN3E4",
+  authDomain: "food-order-app-cd350.firebaseapp.com",
+  projectId: "food-order-app-cd350",
+  storageBucket: "food-order-app-cd350.appspot.com",
+  messagingSenderId: "301599105046",
+  appId: "1:301599105046:web:63834effe0020e1b141537",
 };
 
 export const app = initializeApp(firebaseConfig);
