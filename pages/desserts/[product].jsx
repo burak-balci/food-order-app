@@ -3,6 +3,8 @@ import { useRouter } from "next/router";
 import styles from "../../styles/ProductDetail.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addBasket, deleteItem } from "../../context/basketSlice";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const ProductDetail = ({ data }) => {
   const route = useRouter();
@@ -69,8 +71,11 @@ const ProductDetail = ({ data }) => {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${process.env.VERCEL_URL}/api/products`);
-  const data = await res.json();
+  let data = [];
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
+    data.push(doc.data());
+  });
 
   const paths = data.map((item) => {
     return {
@@ -85,8 +90,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch(`http://localhost:3000/api/products`);
-  const data = await res.json();
+  let data = [];
+  const querySnapshot = await getDocs(collection(db, "products"));
+  querySnapshot.forEach((doc) => {
+    data.push(doc.data());
+  });
 
   return {
     props: {

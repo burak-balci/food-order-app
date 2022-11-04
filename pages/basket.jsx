@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Icon from "../components/Icon/Icon";
 import styles from "../styles/Basket.module.css";
 import { deleteItem, clearBasket } from "../context/basketSlice";
-import axios from "axios";
+import { addOrder } from "../firebase";
 
 const Basket = () => {
   const { basket } = useSelector((state) => state.basketReducer);
@@ -12,6 +12,7 @@ const Basket = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const dispatch = useDispatch();
+  console.log(basket);
 
   const total = () => {
     let totalPrice = 0;
@@ -22,21 +23,17 @@ const Basket = () => {
     setTotalP(totalPrice);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (address && name) {
-      axios
-        .post(`${process.env.VERCEL_URL}/api/orders`, {
-          customer: name,
-          address: address,
-          items: basket,
-        })
-        .then((res) => {
-          if (res.status === 201) {
-            dispatch(clearBasket());
-            setModal(false);
-          }
-        });
+      let data = {
+        customer: name,
+        address: address,
+        items: basket,
+      };
+      await addOrder(data);
+      await dispatch(clearBasket());
+      await setModal(false);
     }
   };
 
@@ -98,7 +95,7 @@ const Basket = () => {
                   <td className={styles.listItem}>$ {item.item.price}</td>
                   <td className={styles.listItem}>
                     <span
-                      onClick={() => dispatch(deleteItem(item.item._id))}
+                      onClick={() => dispatch(deleteItem(item.item.id))}
                       className={styles.button}
                     >
                       <Icon icon="xmark" size="24" />

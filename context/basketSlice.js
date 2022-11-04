@@ -13,7 +13,7 @@ export const basketSlice = createSlice({
     },
     deleteItem: (state, action) => {
       const id = action.payload;
-      state.basket = state.basket.filter((item) => item.item._id !== id);
+      state.basket = state.basket.filter((item) => item.item.id !== id);
     },
     clearBasket: (state) => {
       state.basket = [];
